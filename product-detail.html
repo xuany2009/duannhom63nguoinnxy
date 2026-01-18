@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - Tiệm Hoa BA Anh Chàng</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Thêm header từ index.html -->
+    <div id="header" style="margin-top: 0; border-radius: 0;">
+        <a href="index.html" class="logo"> 
+            <img src="./ảnh/flower-seeklogo.png" alt="Logo Tiệm Hoa" width="150" height="100"> 
+        </a>
+        
+        <div id="menu">
+            <div class="item">
+                <a href="index.html">Trang Chủ</a>
+            </div>
+            <div class="item">
+                <a href="index.html#products">Sản phẩm</a>
+            </div>
+            <div class="item">
+                <a href="index.html#comment">Giới thiệu</a>
+            </div>
+            <div class="item">
+                <a href="#footer">Liên hệ</a>
+            </div>
+        </div>
+
+        <div id="actions">
+            <div class="item">
+                <a href="login.html" id="login-btn">  
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="item">
+                <a href="sop.html" id="cart-btn">  
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <span id="cart-badge" style="
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+                    background: linear-gradient(135deg, #ff4081, #e91e63);
+                    color: white;
+                    border-radius: 50%;
+                    width: 22px;
+                    height: 22px;
+                    font-size: 12px;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    z-index: 100;
+                ">0</span>
+            </div>  
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html">Trang chủ</a>
+            <span>/</span>
+            <a href="index.html#products">Sản phẩm</a>
+            <span>/</span>
+            <span class="current" id="product-category">Hoa Tặng</span>
+            <span>/</span>
+            <span class="current" id="product-name">Chi tiết sản phẩm</span>
+        </div>
+    </div>
+
+    <div class="product-detail-container">
+        <div id="product-detail-content">
+            <!-- Nội dung sẽ được tạo động bằng JavaScript -->
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="box">
+            <p>Đảm bảo những bó hoa chất lượng đến với mọi người</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="box">
+            <h3>Liên kết nhanh</h3>
+            <ul class="quick-menu">
+                <li class="item">
+                    <a href="index.html">Trang chủ</a>
+                </li>
+                <li class="item">
+                    <a href="index.html#products">Sản phẩm</a>
+                </li>
+                <li class="item">
+                    <a href="index.html#comment">Giới thiệu</a>
+                </li>
+                <li class="item">
+                    <a href="#contact">Liên hệ</a>
+                </li>
+                <li class="item">
+                    <a href="login.html">Đăng nhập</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Thông tin liên hệ</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 142 Nguyễn Văn Cừ, Q.1, TP.HCM</p>
+            <p><i class="fas fa-phone"></i> 1900 633 045</p>
+            <p><i class="fas fa-envelope"></i> tiemhoa@baanhnang.com</p>
+        </div>
+        <div class="box">
+            <h3>Đăng ký nhận tin</h3>
+            <p>Nhận thông tin khuyến mãi mới nhất</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Địa chỉ email" required>
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </footer>
+
+    <!-- Chỉ include cart.js và product-detail.js -->
+    <script src="cart.js"></script>
+    <script src="product-detail.js"></script>
+    
+    <!-- Script nhỏ cho form newsletter -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert(`Cảm ơn bạn đã đăng ký nhận tin với email: ${email}`);
+                        this.reset();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

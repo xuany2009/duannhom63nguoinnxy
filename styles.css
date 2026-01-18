@@ -1,0 +1,622 @@
+/* styles.css - Đã cập nhật */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#wrapper {
+    width: 100%;
+    min-height: 100vh;
+}
+
+#header {
+    background: rgb(245, 245, 233);
+    width: 100%;
+    padding: 0 30px;
+    margin-top: 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#menu {
+    list-style: none;
+    display: flex;
+}
+
+#menu .item {
+    margin: 0 25px;
+}
+
+#menu .item a {
+    color: #626a67;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+#menu .item a:hover {
+    color: #e91e63;
+}
+
+#actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#actions .item {
+    position: relative;
+}
+
+#actions .item a {
+    color: #626a67;
+    font-size: 24px;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#actions .item a:hover {
+    color: #e91e63;
+    background: rgba(233, 30, 99, 0.1);
+}
+
+#cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, #ff4081, #e91e63);
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#banner {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), 
+                url('./ảnh/a-bouquet-of-pink-tulips-wallpaper-1366x768_46.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    margin-top: 40px;
+    display: flex;
+    padding: 0 133px;
+    position: relative;
+    align-items: center;
+}
+
+#banner .box-left {
+    width: 50%;
+}
+
+#banner .box-left h2 {
+    font-size: 48px;
+    color: #e91e63;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+#banner .box-left h2 span {
+    display: block;
+}
+
+#banner .box-left p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+#banner .box-left button {
+    width: 191px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#banner .box-left button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+
+
+.banner-flower {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    animation: float 3s infinite ease-in-out;
+}
+
+.banner-flower:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.banner-flower:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.banner-flower:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.to-bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.to-bottom img {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 36px;
+    margin: 60px 0 30px;
+    position: relative;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+#comment {
+    width: 90%;
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 50px 0;
+}
+
+#comment h2 {
+    margin-bottom: 50px;
+}
+
+#comment-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+#list-comment {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#list-comment::-webkit-scrollbar {
+    display: none;
+}
+
+#list-comment .item {
+    flex: 0 0 auto;
+    width: 300px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+#list-comment .item:hover {
+    transform: translateY(-10px);
+}
+
+#list-comment .avatar {
+    margin-bottom: 20px;
+}
+
+#list-comment .avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f0f0f0;
+}
+
+#list-comment .name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#list-comment .text {
+    color: #666;
+    line-height: 1.6;
+}
+
+.prev, .next {
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.1);
+}
+
+#footer {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 60px 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 100px;
+}
+
+#footer .box {
+    flex: 1;
+    min-width: 250px;
+}
+
+#footer .box .logo img {
+    margin-bottom: 20px;
+}
+
+#footer .box p {
+    color: #bdc3c7;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#footer .box h3 {
+    color: #ecf0f1;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#footer .quick-menu .item {
+    margin-bottom: 10px;
+}
+
+#footer .quick-menu .item a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#footer .quick-menu .item a:hover {
+    color: #e91e63;
+}
+
+#footer form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+#footer form button {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#footer form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(233, 30, 99, 0.3);
+}
+
+@media (max-width: 1200px) {
+    #banner {
+        padding: 0 50px;
+    }
+    
+    .banner-flower {
+        width: 120px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    #header {
+        padding: 0 15px;
+        flex-wrap: wrap;
+    }
+    
+    #menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    #actions {
+        order: 2;
+    }
+    
+    #banner {
+        flex-direction: column;
+        height: auto;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    
+    #banner .box-left,
+    #banner .box-right {
+        width: 100%;
+        padding: 0;
+    }
+    
+    #banner .box-right {
+        margin-top: 30px;
+        padding-left: 0;
+    }
+    
+    .banner-flower {
+        width: 100px;
+        height: 140px;
+    }
+    
+    #comment-body {
+        flex-direction: column;
+    }
+    
+    #list-comment {
+        width: 100%;
+    }
+    
+    #footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    #footer .box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #banner .box-left h2 {
+        font-size: 32px;
+    }
+    
+    #menu .item {
+        margin: 0 10px;
+    }
+    
+    #menu .item a {
+        font-size: 14px;
+    }
+    
+    .banner-flower {
+        width: 80px;
+        height: 120px;
+    }
+}
+
+/* Thêm CSS cho sản phẩm */
+.gia {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e91e63;
+    text-align: center;
+}
+
+.ten {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: cyan;
+    text-align: center;
+}
+
+.ten-container1, .ten-container2, 
+.ten-container3, .ten-container4 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.ten-card1, .ten-card2, 
+.ten-card3, .ten-card4 {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.ten-card1:hover, .ten-card2:hover,
+.ten-card3:hover, .ten-card4:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ten-card1 img, .ten-card2 img,
+.ten-card3 img, .ten-card4 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #f0f0f0;
+}
+
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .ten-container1, .ten-container2,
+    .ten-container3, .ten-container4 {
+        gap: 10px;
+        padding: 5px;
+    }
+    
+    .ten-card1, .ten-card2,
+    .ten-card3, .ten-card4 {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .ten-card1, .ten-card2,
+    .ten-card3, .ten-card4 {
+        width: 100%;
+        margin: 0 10px 20px 10px;
+    }
+}
+
+
+/* thanh cuộn */
+/* Thêm vào styles.css - Thanh cuộn lên/xuống */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.scroll-to-top img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+/* Nút cuộn xuống cho banner */
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down img {
+    width: 40px;
+    height: 40px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}

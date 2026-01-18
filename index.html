@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Hoa BA Anh Chàng</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+<div id="wrapper"> 
+    <div id="header"> 
+        <a href="index.html" class="logo"> 
+            <img src="./ảnh/flower-seeklogo.png" alt="Logo Tiệm Hoa" width="150" height="100"> 
+        </a>
+        
+        <div id="menu">
+            <div class="item">
+                <a href="index.html">Trang Chủ</a>
+            </div>
+            <div class="item">
+                <a href="#products">Sản phẩm</a>
+            </div>
+            <div class="item">
+                <a href="#comment">Giới thiệu</a>
+            </div>
+            <div class="item">
+                <a href="#footer">Liên hệ</a>
+            </div>
+        </div>
+
+        <div id="actions">
+            <!-- Hiển thị avatar người dùng nếu đã đăng nhập -->
+            <div class="item" style="position: relative;" id="user-profile-container">
+                <div id="user-profile">
+                    <img id="user-avatar" src="" alt="Avatar">
+                </div>
+                
+                <!-- Dropdown menu cho người dùng -->
+                <div id="user-dropdown" class="user-dropdown">
+                    <div class="user-dropdown-item" id="dropdown-username">
+                        <i class="fas fa-user"></i>
+                        <span id="dropdown-username-text"></span>
+                    </div>
+                    <div class="user-dropdown-divider"></div>
+                    <a href="sop.html" class="user-dropdown-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        Giỏ hàng
+                    </a>
+                    <a href="#" class="user-dropdown-item" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Đăng xuất
+                    </a>
+                </div>
+                
+                <!-- Hiển thị icon đăng nhập nếu chưa đăng nhập -->
+                <a href="login.html" id="login-btn" title="Đăng nhập">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            
+            <div class="item" style="position: relative;">
+                <a href="sop.html" id="cart-btn" title="Giỏ hàng">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <span id="cart-badge" style="
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+                    background: linear-gradient(135deg, #ff4081, #e91e63);
+                    color: white;
+                    border-radius: 50%;
+                    width: 22px;
+                    height: 22px;
+                    font-size: 12px;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    z-index: 100;
+                ">0</span>
+            </div>  
+        </div>
+    </div>
+
+    <div id="banner">
+        <div class="box-left">
+            <h2>
+                <span>HOA</span>
+                <br>
+                <span>TƯƠI NHẬP KHẨU</span>
+            </h2>
+            <p>Chuyên cung cấp những loại hoa tươi nhập khẩu từ các nơi trên đất nước và thế giới chuyên cung cấp sỉ lẻ cho các cửa hàng</p>
+            <button id="banner-buy-btn">Mua ngay</button>
+        </div>
+       
+        <!-- <div class="to-bottom">
+            <a href="#products">
+                <img src="./ảnh/angle-down.png" alt="Xem sản phẩm" width="50" height="50">
+            </a>
+        </div> -->
+
+        <!-- Cập nhật phần .to-bottom trong banner -->
+<div class="to-bottom">
+    <a href="#products" class="scroll-down">
+        <img src="./ảnh/angle-down.png" alt="Xem sản phẩm">
+    </a>
+</div>
+
+    </div>
+    
+    <br>
+    <br>
+    <br>
+
+    <h2 id="products">Hoa Tặng</h2>
+    <div class="ten-container1" id="danhsach1"></div>
+
+    <h2>Hoa Nền</h2>
+    <div class="ten-container2" id="danhsach2"></div>
+
+    <h2>Hoa Chậu</h2>
+    <div class="ten-container3" id="danhsach3"></div>
+    
+    <h2>Hoa Mùa</h2>
+    <div class="ten-container4" id="danhsach4"></div>
+
+    <br><br><br><br>
+</div>
+
+<div id="comment">
+    <h2>CÁC THÀNH VIÊN TRONG NHÓM</h2>
+    <div id="comment-body">
+        
+        <ul id="list-comment">
+            <li class="item"> 
+                <div class="avatar">
+                    <img src="./ảnh/nnxy.jpg" alt="Ngô Nguyễn Xuân Ý" width="250" height="200">
+                </div>
+                <div class="name">Ngô Nguyễn Xuân Ý</div>
+                <div class="text">
+                    <p> Nhóm trưởng của nhóm 6 làm phần thân của wedsite </p>
+                </div>
+            </li>
+            <li class="item"> 
+                <div class="avatar">
+                    <img src="./ảnh/nnt.png" alt="Ngô Nguyễn T..." width="250" height="200">
+                </div>
+                <div class="name">nguyễn ngọc thiện</div>
+                <div class="text">
+                    <p> làm phần chân của wedsite </p>
+                </div>
+            </li>
+            <li class="item"> 
+                <div class="avatar">
+                    <img src="./ảnh/cvđ.jpg" alt="Cao Văn Đ..." width="250" height="200">
+                </div>
+                <div class="name">Cao Văn Điệp</div>
+                <div class="text">
+                    <p>  làm phần tiêu đề của trang wedsite </p>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+</div>
+
+<div id="footer">
+    <div class="box">
+        <div class="logo">
+            <img src="./ảnh/flower-seeklogo.png" alt="Logo" width="150" height="100">
+        </div>
+        <p>Đảm bảo những bó hoa chất lượng đến với mọi người</p>
+    </div>
+    <div class="box">
+        <ul class="quick-menu">
+            <div class="item">
+                <a href="index.html">Trang chủ</a>
+            </div>
+            <div class="item">
+               <a href="#products">Sản phẩm</a>
+            </div>
+            <div class="item">
+                <a href="#comment">Giới thiệu</a>
+            </div>
+            <div class="item">
+                <a href="https://www.google.com/maps/place/Tr%C6%B0%E1%BB%9Dng+Trung+C%E1%BA%A5p+C%C3%B4ng+Nghi%E1%BB%87p+B%C3%ACnh+D%C6%B0%C6%A1ng/@10.90042,106.740078,16z/data=!4m6!3m5!1s0x3174d83c1116183d:0xfa754495eeb43247!8m2!3d10.9004199!4d106.740078!16s%2Fg%2F1hc2zhkcb?hl=vi&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D">địa chỉ</a>
+            </div>
+        </ul>
+    </div>
+    <div class="box">
+        <h3>Liên hệ</h3>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Địa chỉ email" required>
+            <button type="submit">Nhận tin</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- thanh cuộn -->
+ <!-- Thêm vào cuối thẻ <body> trong index.html -->
+<div class="scroll-to-top" id="scrollToTop" title="Lên đầu trang">
+    <img src="./ảnh/angle-down.png" alt="Lên đầu trang" style="transform: rotate(180deg);">
+</div>
+
+
+<!-- Script quản lý sản phẩm -->
+<script src="main.js"></script>
+
+<!-- Script quản lý giỏ hàng -->
+<script src="cart.js"></script>
+
+<!-- Script xử lý lỗi -->
+<script src="error-handler.js"></script>
+
+<!-- Thay thế toàn bộ nội dung trong thẻ <script> cuối cùng của index.html -->
+<script>
+    // Hệ thống đăng nhập/quản lý người dùng
+    const AuthSystem = {
+        // Kiểm tra đăng nhập
+        isLoggedIn: function() {
+            return !!localStorage.getItem('currentUser');
+        },
+        
+        // Lấy thông tin người dùng hiện tại
+        getCurrentUser: function() {
+            const user = localStorage.getItem('currentUser');
+            return user ? JSON.parse(user) : null;
+        },
+        
+        // Đăng xuất
+        logout: function() {
+            localStorage.removeItem('currentUser');
+            this.updateAuthUI();
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        },
+        
+        // Cập nhật giao diện theo trạng thái đăng nhập
+        updateAuthUI: function() {
+            const currentUser = this.getCurrentUser();
+            const userProfile = document.getElementById('user-profile');
+            const loginBtn = document.getElementById('login-btn');
+            const dropdownUsername = document.getElementById('dropdown-username-text');
+            const userDropdown = document.getElementById('user-dropdown');
+            
+            if (currentUser && userProfile) {
+                const userAvatar = document.getElementById('user-avatar');
+                if (userAvatar) {
+                    userAvatar.src = currentUser.avatar || 'https://i.pravatar.cc/150?img=3';
+                    userAvatar.onerror = function() {
+                        this.src = 'https://i.pravatar.cc/150?img=3';
+                    };
+                }
+                if (dropdownUsername) {
+                    dropdownUsername.textContent = currentUser.username;
+                }
+                if (userProfile) userProfile.style.display = 'block';
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (userDropdown) userDropdown.style.display = 'none';
+            } else if (loginBtn) {
+                if (loginBtn) loginBtn.style.display = 'block';
+                if (userProfile) userProfile.style.display = 'none';
+                if (userDropdown) userDropdown.style.display = 'none';
+            }
+        },
+        
+        // Khởi tạo sự kiện
+        init: function() {
+            this.updateAuthUI();
+            
+            // Sự kiện click vào avatar người dùng
+            const userProfile = document.getElementById('user-profile');
+            if (userProfile) {
+                userProfile.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const userDropdown = document.getElementById('user-dropdown');
+                    if (userDropdown) {
+                        userDropdown.style.display = userDropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            }
+            
+            // Đóng dropdown khi click ra ngoài
+            document.addEventListener('click', (e) => {
+                const userDropdown = document.getElementById('user-dropdown');
+                if (userDropdown && !e.target.closest('#user-profile-container')) {
+                    userDropdown.style.display = 'none';
+                }
+            });
+        }
+    };
+    
+    // Hàm lấy cartManager an toàn
+    function getCartManager() {
+        if (typeof window.cartManager !== 'undefined' && window.cartManager) {
+            return window.cartManager;
+        }
+        
+        // Fallback cartManager
+        return {
+            addToCart: function(product, quantity = 1) {
+                try {
+                    if (!product || !product.id) {
+                        console.error('Sản phẩm không hợp lệ:', product);
+                        return false;
+                    }
+                    
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const existingItem = cart.find(item => item.id === product.id);
+                    const qty = Math.max(1, Math.min(99, quantity));
+                    
+                    if (existingItem) {
+                        existingItem.quantity += qty;
+                    } else {
+                        cart.push({
+                            id: product.id,
+                            name: product.tendv || product.name || 'Sản phẩm không tên',
+                            image: product.anh || product.image || './ảnh/default-flower.jpg',
+                            price: parseInt(product.gia || product.price || 0),
+                            quantity: qty,
+                            category: product.category || 'Không phân loại'
+                        });
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    // Cập nhật số lượng hiển thị
+                    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+                    const displayCount = totalItems > 99 ? '99+' : totalItems;
+                    
+                    document.querySelectorAll('#cart-badge, #cart-count, .cart-count').forEach(el => {
+                        if (el) {
+                            el.textContent = displayCount;
+                            el.style.display = totalItems > 0 ? 'flex' : 'none';
+                        }
+                    });
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Lỗi khi thêm vào giỏ hàng:', error);
+                    return false;
+                }
+            }
+        };
+    }
+    
+    // Khởi tạo khi DOM sẵn sàng
+    document.addEventListener('DOMContentLoaded', function() {
+        // Khởi tạo hệ thống đăng nhập
+        AuthSystem.init();
+        
+        // Khởi tạo giỏ hàng nếu chưa có
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+        
+        // Cập nhật số lượng giỏ hàng ban đầu
+        setTimeout(() => {
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+                const displayCount = totalItems > 99 ? '99+' : totalItems;
+                
+                document.querySelectorAll('#cart-badge, #cart-count, .cart-count').forEach(el => {
+                    if (el) {
+                        el.textContent = displayCount;
+                        el.style.display = totalItems > 0 ? 'flex' : 'none';
+                    }
+                });
+            } catch (error) {
+                console.error('Lỗi khi cập nhật giỏ hàng:', error);
+            }
+        }, 100);
+        
+        // Sự kiện nút "Mua ngay" trong banner
+        const bannerBtn = document.getElementById('banner-buy-btn');
+        if (bannerBtn) {
+            bannerBtn.addEventListener('click', function() {
+                // Kiểm tra đăng nhập trước khi thêm vào giỏ hàng
+                const currentUser = localStorage.getItem('currentUser');
+                if (!currentUser) {
+                    alert('Vui lòng đăng nhập để mua hàng!');
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                    return;
+                }
+                
+                const sampleProduct = {
+                    id: "sample-" + Date.now(),
+                    name: "Bó Hoa Tươi Nhập Khẩu",
+                    image: "./ảnh/h9.jpg",
+                    price: 500000,
+                    quantity: 1,
+                    category: "Hoa Tặng",
+                    tendv: "Bó Hoa Tươi Nhập Khẩu",
+                    gia: "500000"
+                };
+                
+                const cartManager = getCartManager();
+                const success = cartManager.addToCart(sampleProduct, 1);
+                
+                if (success) {
+                    alert('Đã thêm bó hoa tươi vào giỏ hàng!');
+                } else {
+                    alert('Không thể thêm vào giỏ hàng!');
+                }
+            });
+        }
+        
+        // Sự kiện form đăng ký nhận tin
+        const newsletterForm = document.getElementById('newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert(`Cảm ơn bạn đã đăng ký nhận tin với email: ${email}`);
+                    this.reset();
+                }
+            });
+        }
+        
+        // Smooth scroll cho các liên kết trong trang
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Kiểm tra nếu chưa đăng nhập và truy cập trang cần đăng nhập
+        const protectedPages = ['sop.html', 'cart.html'];
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        if (protectedPages.includes(currentPage) && !AuthSystem.isLoggedIn()) {
+            alert('Vui lòng đăng nhập để truy cập trang này!');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+        
+        // Sự kiện click vào nút giỏ hàng
+        document.getElementById('cart-btn')?.addEventListener('click', function(e) {
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                e.preventDefault();
+                alert('Vui lòng đăng nhập để xem giỏ hàng!');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+            }
+        });
+    });
+    
+    // Hàm đăng xuất toàn cục
+    window.logout = function() {
+        AuthSystem.logout();
+    };
+</script>
+
+
+
+
+</body>
+</html>
