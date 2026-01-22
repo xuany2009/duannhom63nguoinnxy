@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiệm Hoa BA Anh Chàng</title>
+    <title>Tam Ca Bánh Ngọt</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,32 +12,36 @@
 <div id="wrapper"> 
     <div id="header"> 
         <a href="index.html" class="logo"> 
-            <img src="./ảnh/flower-seeklogo.png" alt="Logo Tiệm Hoa" width="150" height="100"> 
+            <img src="./ảnh/logo.jpg" alt="Logo Tiệm Bánh" width="150" height="100"> 
         </a>
         
-        <div id="menu">
-            <div class="item">
-                <a href="index.html">Trang Chủ</a>
-            </div>
-            <div class="item">
-                <a href="#products">Sản phẩm</a>
-            </div>
-            <div class="item">
-                <a href="#comment">Giới thiệu</a>
-            </div>
-            <div class="item">
-                <a href="#footer">Liên hệ</a>
-            </div>
+       <div id="menu">
+        <div class="item">
+            <a href="index.html">Trang Chủ</a>
+        </div>
+        <div class="item">
+            <a href="#products">Sản phẩm</a>
+        </div>
+        <div class="item">
+            <a href="#shop-intro">Giới thiệu</a>
+        </div>
+        <div class="item">
+           <a href="about-us.html">Thành viên</a>
+        </div>
+        <div class="item">
+            <a href="#footer">Liên hệ</a>
+        </div>
+            
         </div>
 
         <div id="actions">
-            <!-- Hiển thị avatar người dùng nếu đã đăng nhập -->
+            
             <div class="item" style="position: relative;" id="user-profile-container">
                 <div id="user-profile">
                     <img id="user-avatar" src="" alt="Avatar">
                 </div>
                 
-                <!-- Dropdown menu cho người dùng -->
+        
                 <div id="user-dropdown" class="user-dropdown">
                     <div class="user-dropdown-item" id="dropdown-username">
                         <i class="fas fa-user"></i>
@@ -53,8 +57,7 @@
                         Đăng xuất
                     </a>
                 </div>
-                
-                <!-- Hiển thị icon đăng nhập nếu chưa đăng nhập -->
+                <!-- Ngô Nguyễn Xuân Ý -->
                 <a href="login.html" id="login-btn" title="Đăng nhập">
                     <i class="fas fa-user-circle"></i>
                 </a>
@@ -88,93 +91,252 @@
     <div id="banner">
         <div class="box-left">
             <h2>
-                <span>HOA</span>
+                <span>BÁNH KEM</span>
                 <br>
-                <span>TƯƠI NHẬP KHẨU</span>
+                <span>CAO CẤP - TƯƠI NGON</span>
             </h2>
-            <p>Chuyên cung cấp những loại hoa tươi nhập khẩu từ các nơi trên đất nước và thế giới chuyên cung cấp sỉ lẻ cho các cửa hàng</p>
-            <button id="banner-buy-btn">Mua ngay</button>
+            <p style=" transform: translateX(170px);">Chuyên cung cấp bánh kem chất lượng cao với nguyên liệu nhập khẩu. Đặt online giao tận nơi trong 2 giờ</p>
+            
         </div>
        
         <!-- <div class="to-bottom">
-            <a href="#products">
-                <img src="./ảnh/angle-down.png" alt="Xem sản phẩm" width="50" height="50">
+            <a href="#products" class="scroll-down">
+                <img src="./ảnh/angle-down.png" alt="Xem sản phẩm">
             </a>
         </div> -->
+    </div>
+    
+    <!-- PHẦN MỚI: DANH MỤC BÁNH -->
+    <div class="category-nav-section">
 
-        <!-- Cập nhật phần .to-bottom trong banner -->
-<div class="to-bottom">
-    <a href="#products" class="scroll-down">
-        <img src="./ảnh/angle-down.png" alt="Xem sản phẩm">
-    </a>
+        <!-- PHẦN DANH MỤC & SẢN PHẨM -->
+<div class="category-products-container">
+    <!-- Sidebar danh mục -->
+    <div class="category-sidebar-container">
+        <h2><i class="fas fa-bars"></i> DANH MỤC BÁNH</h2>
+        <div class="category-list">
+            <a href="#products" class="category-item active" onclick="filterProducts('all')">
+                <i class="fas fa-star"></i>
+                <span>Tất cả sản phẩm</span>
+                <span class="count">(60+)</span>
+            </a>
+            <a href="#" class="category-item" onclick="filterProducts('birthday')">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Bánh Sinh Nhật</span>
+                <span class="count">(15)</span>
+            </a>
+            <a href="#" class="category-item" onclick="filterProducts('wedding')">
+                <i class="fas fa-ring"></i>
+                <span>Bánh Cưới</span>
+                <span class="count">(10)</span>
+            </a>
+            <a href="#" class="category-item" onclick="filterProducts('cupcake')">
+                <i class="fas fa-cupcake"></i>
+                <span>Bánh Cupcake</span>
+                <span class="count">(12)</span>
+            </a>
+            <a href="#" class="category-item" onclick="filterProducts('mousse')">
+                <i class="fas fa-ice-cream"></i>
+                <span>Bánh Mousse</span>
+                <span class="count">(10)</span>
+            </a>
+            <a href="#" class="category-item" onclick="filterProducts('combo')">
+                <i class="fas fa-gift"></i>
+                <span>Combo & Set Quà</span>
+                <span class="count">(8)</span>
+            </a>
+            <a href="#" class="category-item sale" onclick="filterProducts('sale')">
+                <i class="fas fa-tag"></i>
+                <span>Khuyến mãi</span>
+                <span class="count">Hot</span>
+            </a>
+            <a href="#" class="category-item new" onclick="filterProducts('new')">
+                <i class="fas fa-fire"></i>
+                <span>Sản phẩm mới</span>
+                <span class="count">New</span>
+            </a>
+        </div>
+        
+        <div class="category-banner">
+            <h3><i class="fas fa-gift"></i> ƯU ĐÃI ĐẶC BIỆT</h3>
+            <p>Giảm ngay 15% cho đơn hàng đầu tiên</p>
+            <p>Miễn phí giao hàng đơn từ 500k</p>
+            <button class="promo-btn" onclick="showPromoCode()">
+                <i class="fas fa-ticket-alt"></i> Lấy mã giảm giá
+            </button>
+        </div>
+    </div>
+    
+    <!-- Phần hiển thị sản phẩm -->
+<div class="products-main-content">
+    <div class="products-header">
+        <h2 id="category-title">TẤT CẢ SẢN PHẨM</h2>
+        <p class="category-description" id="category-description">Khám phá những chiếc bánh kem thơm ngon, tươi mới</p>
+        
+        <!-- THÊM THANH TÌM KIẾM -->
+        <div class="search-container">
+            <input type="text" 
+                   class="search-box" 
+                   id="search-input" 
+                   placeholder="🔍 Tìm kiếm sản phẩm theo tên, mô tả, danh mục..."
+                   onkeyup="searchProducts(event)">
+            <button class="search-btn" onclick="performSearch()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <!-- Hiển thị kết quả tìm kiếm -->
+        <div class="search-results-header" id="search-results-header" style="display: none;">
+            <h3>Kết quả tìm kiếm</h3>
+            <p id="search-results-count">Tìm thấy 0 sản phẩm</p>
+        </div>
+    </div>
+    
+    <!-- Nơi hiển thị sản phẩm -->
+    <div class="products-grid" id="products-grid">
+        <!-- Sản phẩm sẽ được tạo động bằng JavaScript -->
+    </div>
+    
+    <!-- Phân trang -->
+    <div class="pagination" id="pagination">
+        <!-- Phân trang sẽ được tạo động bằng JavaScript -->
+    </div>
+</div>
+    
 </div>
 
     </div>
     
     <br>
     <br>
-    <br>
 
-    <h2 id="products">Hoa Tặng</h2>
+    <h2 id="products">🍰 BÁNH KEM SINH NHẬT</h2>
     <div class="ten-container1" id="danhsach1"></div>
 
-    <h2>Hoa Nền</h2>
+    <h2>💍 BÁNH KEM CƯỚI</h2>
     <div class="ten-container2" id="danhsach2"></div>
 
-    <h2>Hoa Chậu</h2>
+    <h2>🧁 BÁNH CUPCAKE</h2>
     <div class="ten-container3" id="danhsach3"></div>
     
-    <h2>Hoa Mùa</h2>
+    <h2>🎂 BÁNH MOUSSE & ĐẶC BIỆT</h2>
     <div class="ten-container4" id="danhsach4"></div>
+    
+    <h2>🎁 COMBO & SET QUÀ TẶNG</h2>
+    <div class="ten-container5" id="danhsach5"></div>
 
     <br><br><br><br>
 </div>
 
+
+<!-- Thêm phần này sau phần sản phẩm, trước phần thành viên -->
+<div id="shop-intro" class="shop-intro-section">
+    <h2>🏪 GIỚI THIỆU TIỆM BÁNH</h2>
+    
+    <div class="intro-container">
+        <div class="intro-image">
+            <img src="./ảnh/logo.jpg" alt="Tiệm Bánh BA Anh Chàng" onerror="this.src='./ảnh/default-cake.jpg'">
+        </div>
+        
+        <div class="intro-content">
+            <div class="intro-card">
+                <i class="fas fa-crown"></i>
+                <h3>Chất Lượng Cao Cấp</h3>
+                <p>Chúng tôi sử dụng nguyên liệu nhập khẩu chất lượng cao, đảm bảo an toàn vệ sinh thực phẩm</p>
+            </div>
+            
+            <div class="intro-card">
+                <i class="fas fa-heart"></i>
+                <h3>Yêu Thương Trong Từng Chiếc Bánh</h3>
+                <p>Mỗi chiếc bánh được làm với tất cả tình yêu và sự tỉ mỉ của những người thợ lành nghề</p>
+            </div>
+            
+            <div class="intro-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Giao Hàng Nhanh Chóng</h3>
+                <p>Đặt online - Giao tận nơi trong 2 giờ. Phục vụ 24/7 cho những dịp đặc biệt</p>
+            </div>
+            
+            <div class="intro-card">
+                <i class="fas fa-award"></i>
+                <h3>Thương Hiệu Uy Tín</h3>
+                <p>5 năm kinh nghiệm với hàng ngàn khách hàng tin tưởng và ủng hộ</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="story-section">
+        <h3><i class="fas fa-book-open"></i> Câu Chuyện Của Chúng Tôi</h3>
+        <p>Tiệm bánh <strong>BA Anh Chàng</strong> được thành lập năm 2019 với mong muốn mang đến những chiếc bánh kem không chỉ đẹp mắt mà còn ngon miệng, an toàn cho sức khỏe. Xuất phát từ tình yêu với nghệ thuật làm bánh và mong muốn tạo ra những sản phẩm chất lượng, chúng tôi đã không ngừng học hỏi và cải tiến để mang đến cho khách hàng những trải nghiệm tốt nhất.</p>
+        
+        <div class="mission-vision">
+            <div class="mission">
+                <h4><i class="fas fa-bullseye"></i> Sứ Mệnh</h4>
+                <p>"Lan tỏa niềm vui và hạnh phúc qua những chiếc bánh chất lượng, mang đến trải nghiệm ẩm thực tuyệt vời cho mọi khách hàng."</p>
+            </div>
+            
+            <div class="vision">
+                <h4><i class="fas fa-eye"></i> Tầm Nhìn</h4>
+                <p>"Trở thành tiệm bánh kem hàng đầu, được yêu thích và tin tưởng nhất tại Việt Nam, góp phần nâng cao văn hóa ẩm thực bánh ngọt."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+
+
+
+
+
+<!-- Tìm phần này trong index.html -->
 <div id="comment">
-    <h2>CÁC THÀNH VIÊN TRONG NHÓM</h2>
+    <h2>👥 CÁC THÀNH VIÊN TRONG NHÓM</h2>
     <div id="comment-body">
         
         <ul id="list-comment">
-            <li class="item"> 
+            <li class="item" onclick="viewMemberDetail('caodiep')"> 
+                <div class="avatar">
+                    <img src="./ảnh/cvđ.jpg" alt="Cao Văn Điệp" width="250" height="200">
+                </div>
+                <div class="name">Cao Văn Điệp</div>
+                <div class="text">
+                    <p>Phát triển giao diện người dùng & trải nghiệm mua sắm</p>
+                </div>
+            </li>
+            <li class="item" onclick="viewMemberDetail('ngoxy')"> 
                 <div class="avatar">
                     <img src="./ảnh/nnxy.jpg" alt="Ngô Nguyễn Xuân Ý" width="250" height="200">
                 </div>
                 <div class="name">Ngô Nguyễn Xuân Ý</div>
                 <div class="text">
-                    <p> Nhóm trưởng của nhóm 6 làm phần thân của wedsite </p>
+                    <p>Nhóm trưởng - Quản lý dự án & phát triển backend</p>
                 </div>
             </li>
-            <li class="item"> 
+            
+            <li class="item" onclick="viewMemberDetail('ngocthien')"> 
                 <div class="avatar">
-                    <img src="./ảnh/nnt.png" alt="Ngô Nguyễn T..." width="250" height="200">
+                    <img src="./ảnh/nnt2.jpg" alt="nguyễn ngọc thiện" width="250" height="200">
                 </div>
-                <div class="name">nguyễn ngọc thiện</div>
+                <div class="name">Nguyễn Ngọc Thiện</div>
                 <div class="text">
-                    <p> làm phần chân của wedsite </p>
-                </div>
-            </li>
-            <li class="item"> 
-                <div class="avatar">
-                    <img src="./ảnh/cvđ.jpg" alt="Cao Văn Đ..." width="250" height="200">
-                </div>
-                <div class="name">Cao Văn Điệp</div>
-                <div class="text">
-                    <p>  làm phần tiêu đề của trang wedsite </p>
+                    <p>Thiết kế giao diện & xử lý hình ảnh sản phẩm</p>
                 </div>
             </li>
         </ul>
-        
     </div>
 </div>
-
 <div id="footer">
     <div class="box">
         <div class="logo">
-            <img src="./ảnh/flower-seeklogo.png" alt="Logo" width="150" height="100">
+            <img src="./ảnh/logo.jpg" alt="Logo" width="150" height="100">
         </div>
-        <p>Đảm bảo những bó hoa chất lượng đến với mọi người</p>
+        <p>"Hương vị ngọt ngào cho mọi dịp đặc biệt"</p>
+        <p>⏰ Mở cửa: 7:00 - 22:00 hàng ngày</p>
     </div>
     <div class="box">
+        <h3>Liên kết nhanh</h3>
         <ul class="quick-menu">
             <div class="item">
                 <a href="index.html">Trang chủ</a>
@@ -186,26 +348,61 @@
                 <a href="#comment">Giới thiệu</a>
             </div>
             <div class="item">
-                <a href="https://www.google.com/maps/place/Tr%C6%B0%E1%BB%9Dng+Trung+C%E1%BA%A5p+C%C3%B4ng+Nghi%E1%BB%87p+B%C3%ACnh+D%C6%B0%C6%A1ng/@10.90042,106.740078,16z/data=!4m6!3m5!1s0x3174d83c1116183d:0xfa754495eeb43247!8m2!3d10.9004199!4d106.740078!16s%2Fg%2F1hc2zhkcb?hl=vi&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D">địa chỉ</a>
+                <a href="#footer">Liên hệ</a>
+            </div>
+            <div class="item">
+                <a href="login.html">Đăng nhập</a>
             </div>
         </ul>
     </div>
+    <!-- <div class="box">
+        <h3>Chính sách</h3>
+        <ul class="quick-menu">
+            <div class="item">
+                <a href="#">Chính sách giao hàng</a>
+            </div>
+            <div class="item">
+                <a href="#">Bảo mật thông tin</a>
+            </div>
+            <div class="item">
+                <a href="#">Đổi trả & hoàn tiền</a>
+            </div>
+            <div class="item">
+                <a href="#">Điều khoản sử dụng</a>
+            </div>
+        </ul>
+    </div> -->
     <div class="box">
-        <h3>Liên hệ</h3>
+            <h3>Thông tin liên hệ</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 79 ĐT743, Binh Hoà, Thuận An, Bình Dương</p>
+            <p><i class="fas fa-phone"></i> 0935 656 603</p>
+            <p><i class="fas fa-envelope"></i> ngonguyenxuany@gmail.com</p>
+        </div>
+
+
+
+
+    <div class="box">
+        <h3>Đăng ký nhận tin</h3>
+        <p>Nhận ưu đãi 10% cho đơn hàng đầu tiên</p>
         <form id="newsletter-form">
-            <input type="email" placeholder="Địa chỉ email" required>
-            <button type="submit">Nhận tin</button>
+            <input type="email" placeholder="Email của bạn" required>
+            <button type="submit">Đăng ký</button>
         </form>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/bdi.edu.vn"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@xuany8066"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            
+        </div>
     </div>
 </div>
 
-
 <!-- thanh cuộn -->
- <!-- Thêm vào cuối thẻ <body> trong index.html -->
 <div class="scroll-to-top" id="scrollToTop" title="Lên đầu trang">
     <img src="./ảnh/angle-down.png" alt="Lên đầu trang" style="transform: rotate(180deg);">
 </div>
-
 
 <!-- Script quản lý sản phẩm -->
 <script src="main.js"></script>
@@ -216,22 +413,18 @@
 <!-- Script xử lý lỗi -->
 <script src="error-handler.js"></script>
 
-<!-- Thay thế toàn bộ nội dung trong thẻ <script> cuối cùng của index.html -->
 <script>
     // Hệ thống đăng nhập/quản lý người dùng
     const AuthSystem = {
-        // Kiểm tra đăng nhập
         isLoggedIn: function() {
             return !!localStorage.getItem('currentUser');
         },
         
-        // Lấy thông tin người dùng hiện tại
         getCurrentUser: function() {
             const user = localStorage.getItem('currentUser');
             return user ? JSON.parse(user) : null;
         },
         
-        // Đăng xuất
         logout: function() {
             localStorage.removeItem('currentUser');
             this.updateAuthUI();
@@ -240,40 +433,54 @@
             }, 1000);
         },
         
-        // Cập nhật giao diện theo trạng thái đăng nhập
-        updateAuthUI: function() {
-            const currentUser = this.getCurrentUser();
-            const userProfile = document.getElementById('user-profile');
-            const loginBtn = document.getElementById('login-btn');
-            const dropdownUsername = document.getElementById('dropdown-username-text');
-            const userDropdown = document.getElementById('user-dropdown');
-            
-            if (currentUser && userProfile) {
-                const userAvatar = document.getElementById('user-avatar');
-                if (userAvatar) {
-                    userAvatar.src = currentUser.avatar || 'https://i.pravatar.cc/150?img=3';
-                    userAvatar.onerror = function() {
-                        this.src = 'https://i.pravatar.cc/150?img=3';
-                    };
-                }
-                if (dropdownUsername) {
-                    dropdownUsername.textContent = currentUser.username;
-                }
-                if (userProfile) userProfile.style.display = 'block';
-                if (loginBtn) loginBtn.style.display = 'none';
-                if (userDropdown) userDropdown.style.display = 'none';
-            } else if (loginBtn) {
-                if (loginBtn) loginBtn.style.display = 'block';
-                if (userProfile) userProfile.style.display = 'none';
-                if (userDropdown) userDropdown.style.display = 'none';
-            }
-        },
+
+
+
+
+
+     updateAuthUI: function() {
+    const currentUser = this.getCurrentUser();
+    const userProfile = document.getElementById('user-profile');
+    const loginBtn = document.getElementById('login-btn');
+    const dropdownUsername = document.getElementById('dropdown-username-text');
+    const userDropdown = document.getElementById('user-dropdown');
+    const userAvatar = document.getElementById('user-avatar');
+    
+    if (currentUser && userProfile && userAvatar) {
+        userAvatar.src = currentUser.avatar || 'https://i.pravatar.cc/150?img=3';
+        userAvatar.onerror = function() {
+            this.src = 'https://i.pravatar.cc/150?img=3';
+        };
         
-        // Khởi tạo sự kiện
+        if (dropdownUsername) {
+            dropdownUsername.textContent = currentUser.username;
+        }
+        
+        if (userProfile) userProfile.style.display = 'block';
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (userDropdown) userDropdown.style.display = 'none';
+        
+        // Cập nhật avatar trong user profile
+        const profileAvatar = userProfile.querySelector('img');
+        if (profileAvatar) {
+            profileAvatar.src = currentUser.avatar || 'https://i.pravatar.cc/150?img=3';
+            profileAvatar.onerror = function() {
+                this.src = 'https://i.pravatar.cc/150?img=3';
+            };
+        }
+    } else {
+        if (loginBtn) loginBtn.style.display = 'block';
+        if (userProfile) userProfile.style.display = 'none';
+        if (userDropdown) userDropdown.style.display = 'none';
+    }
+},
+
+
+
+        
         init: function() {
             this.updateAuthUI();
             
-            // Sự kiện click vào avatar người dùng
             const userProfile = document.getElementById('user-profile');
             if (userProfile) {
                 userProfile.addEventListener('click', (e) => {
@@ -285,7 +492,6 @@
                 });
             }
             
-            // Đóng dropdown khi click ra ngoài
             document.addEventListener('click', (e) => {
                 const userDropdown = document.getElementById('user-dropdown');
                 if (userDropdown && !e.target.closest('#user-profile-container')) {
@@ -295,63 +501,58 @@
         }
     };
     
-    // Hàm lấy cartManager an toàn
-    function getCartManager() {
-        if (typeof window.cartManager !== 'undefined' && window.cartManager) {
-            return window.cartManager;
-        }
+   
+    // Hàm lọc bánh theo danh mục
+    function filterCakes(category) {
+        // Xóa active khỏi tất cả category items
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.classList.remove('active');
+        });
         
-        // Fallback cartManager
-        return {
-            addToCart: function(product, quantity = 1) {
-                try {
-                    if (!product || !product.id) {
-                        console.error('Sản phẩm không hợp lệ:', product);
-                        return false;
-                    }
-                    
-                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                    const existingItem = cart.find(item => item.id === product.id);
-                    const qty = Math.max(1, Math.min(99, quantity));
-                    
-                    if (existingItem) {
-                        existingItem.quantity += qty;
-                    } else {
-                        cart.push({
-                            id: product.id,
-                            name: product.tendv || product.name || 'Sản phẩm không tên',
-                            image: product.anh || product.image || './ảnh/default-flower.jpg',
-                            price: parseInt(product.gia || product.price || 0),
-                            quantity: qty,
-                            category: product.category || 'Không phân loại'
-                        });
-                    }
-                    
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    
-                    // Cập nhật số lượng hiển thị
-                    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
-                    const displayCount = totalItems > 99 ? '99+' : totalItems;
-                    
-                    document.querySelectorAll('#cart-badge, #cart-count, .cart-count').forEach(el => {
-                        if (el) {
-                            el.textContent = displayCount;
-                            el.style.display = totalItems > 0 ? 'flex' : 'none';
-                        }
-                    });
-                    
-                    return true;
-                } catch (error) {
-                    console.error('Lỗi khi thêm vào giỏ hàng:', error);
-                    return false;
-                }
-            }
-        };
+        // Thêm active vào category được chọn
+        event.target.closest('.category-item').classList.add('active');
+        
+        // Cuộn đến phần tương ứng
+        switch(category) {
+            case 'birthday':
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case 'wedding':
+                document.querySelector('h2:nth-of-type(2)').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case 'cupcake':
+                document.querySelector('h2:nth-of-type(3)').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case 'mousse':
+                document.querySelector('h2:nth-of-type(4)').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case 'combo':
+                document.querySelector('h2:nth-of-type(5)').scrollIntoView({ behavior: 'smooth' });
+                break;
+            default:
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
     }
+    
+    // Hàm cuộn đến section
+    function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    // Hàm hiển thị mã giảm giá
+    function showPromoCode() {
+        alert('🎉 MÃ KHUYẾN MÃI: BAKECAKES15\nGiảm 15% cho đơn hàng đầu tiên\nÁp dụng đến hết tháng 12/2024');
+    }
+    
+    // ============================================
+    // KẾT THÚC HÀM MỚI
+    // ============================================
     
     // Khởi tạo khi DOM sẵn sàng
     document.addEventListener('DOMContentLoaded', function() {
-        // Khởi tạo hệ thống đăng nhập
         AuthSystem.init();
         
         // Khởi tạo giỏ hàng nếu chưa có
@@ -377,42 +578,6 @@
             }
         }, 100);
         
-        // Sự kiện nút "Mua ngay" trong banner
-        const bannerBtn = document.getElementById('banner-buy-btn');
-        if (bannerBtn) {
-            bannerBtn.addEventListener('click', function() {
-                // Kiểm tra đăng nhập trước khi thêm vào giỏ hàng
-                const currentUser = localStorage.getItem('currentUser');
-                if (!currentUser) {
-                    alert('Vui lòng đăng nhập để mua hàng!');
-                    setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 1500);
-                    return;
-                }
-                
-                const sampleProduct = {
-                    id: "sample-" + Date.now(),
-                    name: "Bó Hoa Tươi Nhập Khẩu",
-                    image: "./ảnh/h9.jpg",
-                    price: 500000,
-                    quantity: 1,
-                    category: "Hoa Tặng",
-                    tendv: "Bó Hoa Tươi Nhập Khẩu",
-                    gia: "500000"
-                };
-                
-                const cartManager = getCartManager();
-                const success = cartManager.addToCart(sampleProduct, 1);
-                
-                if (success) {
-                    alert('Đã thêm bó hoa tươi vào giỏ hàng!');
-                } else {
-                    alert('Không thể thêm vào giỏ hàng!');
-                }
-            });
-        }
-        
         // Sự kiện form đăng ký nhận tin
         const newsletterForm = document.getElementById('newsletter-form');
         if (newsletterForm) {
@@ -420,13 +585,13 @@
                 e.preventDefault();
                 const email = this.querySelector('input[type="email"]').value;
                 if (email) {
-                    alert(`Cảm ơn bạn đã đăng ký nhận tin với email: ${email}`);
+                    alert(`Cảm ơn bạn đã đăng ký nhận tin với email: ${email}\nMã giảm giá 10% đã được gửi đến email của bạn!`);
                     this.reset();
                 }
             });
         }
         
-        // Smooth scroll cho các liên kết trong trang
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -443,7 +608,7 @@
             });
         });
         
-        // Kiểm tra nếu chưa đăng nhập và truy cập trang cần đăng nhập
+        // Kiểm tra đăng nhập
         const protectedPages = ['sop.html', 'cart.html'];
         const currentPage = window.location.pathname.split('/').pop();
         
@@ -465,16 +630,50 @@
                 }, 1500);
             }
         });
+        
+        // Thêm thanh cuộn lên đầu trang
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        if (scrollToTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'flex';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
     });
     
     // Hàm đăng xuất toàn cục
     window.logout = function() {
         AuthSystem.logout();
     };
+
+
+
+
+
+
+
+
+
+
+    // Thêm vào phần script của index.html
+function viewMemberDetail(memberId) {
+    // Lưu thông tin thành viên cần xem vào localStorage
+    localStorage.setItem('selectedMember', memberId);
+    
+    // Chuyển hướng đến trang about-us.html
+    window.location.href = 'about-us.html';
+}
 </script>
-
-
-
 
 </body>
 </html>
