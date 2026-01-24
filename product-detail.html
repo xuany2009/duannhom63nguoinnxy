@@ -14,17 +14,61 @@
             <img src="./ảnh/logo.jpg" alt="Logo Tiệm Hoa" width="150" height="100"> 
         </a>
         
-        <div id="menu">
-            <div class="item">
-                <a href="index.html">Trang Chủ</a>
-            </div>
-            <div class="item">
-                <a href="index.html#comment">Giới thiệu</a>
-            </div>
-            <div class="item">
-                <a href="#footer">Liên hệ</a>
+        <!-- Tìm phần #menu trong index.html và cập nhật như sau: -->
+<div id="menu">
+    <div class="item">
+        <a href="index.html">Trang Chủ</a>
+    </div>
+    <div class="item has-dropdown">
+        <a href="#products">Sản phẩm <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-menu">
+            <div class="dropdown-content">
+                <a href="javascript:void(0)" onclick="filterProducts('all')" class="dropdown-item">
+                    <i class="fas fa-star"></i> Tất cả sản phẩm
+                    <span class="count">(60+)</span>
+                </a>
+                <a href="javascript:void(0)" onclick="filterProducts('birthday')" class="dropdown-item">
+                    <i class="fas fa-birthday-cake"></i> Bánh Sinh Nhật
+                    <span class="count">(15)</span>
+                </a>
+                <a href="javascript:void(0)" onclick="filterProducts('wedding')" class="dropdown-item">
+                    <i class="fas fa-ring"></i> Bánh Cưới
+                    <span class="count">(10)</span>
+                </a>
+                <a href="javascript:void(0)" onclick="filterProducts('cupcake')" class="dropdown-item">
+                    <i class="fas fa-cupcake"></i> Bánh Cupcake
+                    <span class="count">(12)</span>
+                </a>
+                <a href="javascript:void(0)" onclick="filterProducts('mousse')" class="dropdown-item">
+                    <i class="fas fa-ice-cream"></i> Bánh Mousse
+                    <span class="count">(10)</span>
+                </a>
+                <a href="javascript:void(0)" onclick="filterProducts('combo')" class="dropdown-item">
+                    <i class="fas fa-gift"></i> Combo & Set Quà
+                    <span class="count">(8)</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript:void(0)" onclick="filterProducts('sale')" class="dropdown-item sale">
+                    <i class="fas fa-tag"></i> Khuyến mãi
+                    <span class="count sale-badge">Hot</span>
+                </a>
+                <a href="javascript:void(0)" onclick="filterProducts('new')" class="dropdown-item new">
+                    <i class="fas fa-fire"></i> Sản phẩm mới
+                    <span class="count new-badge">New</span>
+                </a>
             </div>
         </div>
+    </div>
+    <div class="item">
+        <a href="#shop-intro">Giới thiệu</a>
+    </div>
+    <div class="item">
+       <a href="about-us.html">Thành viên</a>
+    </div>
+    <div class="item">
+        <a href="#footer">Liên hệ</a>
+    </div>
+</div>
 
         <div id="actions">
             <div class="item">
@@ -140,6 +184,73 @@
                 });
             }
         });
+
+
+
+
+function setupDropdownMenu() {
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+    
+    // Desktop - hover
+    dropdownItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('hover');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                if (!item.matches(':hover')) {
+                    item.classList.remove('hover');
+                }
+            }, 200);
+        });
+    });
+    
+    // Mobile - click
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        dropdownItems.forEach(item => {
+            const link = item.querySelector('a');
+            
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Đóng các dropdown khác
+                dropdownItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle dropdown hiện tại
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Đóng dropdown khi click ra ngoài
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.has-dropdown')) {
+                dropdownItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+    }
+}
+
+// Gọi hàm khi DOM sẵn sàng
+document.addEventListener('DOMContentLoaded', function() {
+    // ... các code khác ...
+    
+    setupDropdownMenu();
+    
+    // Cập nhật khi thay đổi kích thước cửa sổ
+    window.addEventListener('resize', function() {
+        setupDropdownMenu();
+    });
+});
     </script>
 </body>
 </html>
