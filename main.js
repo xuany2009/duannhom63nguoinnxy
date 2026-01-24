@@ -878,6 +878,15 @@ function filterProducts(category) {
     // Hiển thị sản phẩm
     renderProducts();
     renderPagination();
+
+
+const productsContainer = document.querySelector('.products-main-content');
+    if (productsContainer) {
+        productsContainer.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+    }
 }
 
 // Hàm hiển thị sản phẩm
