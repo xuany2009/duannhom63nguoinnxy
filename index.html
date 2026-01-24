@@ -699,12 +699,70 @@
     };
 
 
+// Thêm vào phần script của index.html, sau phần AuthSystem
+function setupDropdownMenu() {
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+    
+    // Desktop - hover
+    dropdownItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('hover');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                if (!item.matches(':hover')) {
+                    item.classList.remove('hover');
+                }
+            }, 200);
+        });
+    });
+    
+    // Mobile - click
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        dropdownItems.forEach(item => {
+            const link = item.querySelector('a');
+            
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Đóng các dropdown khác
+                dropdownItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle dropdown hiện tại
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Đóng dropdown khi click ra ngoài
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.has-dropdown')) {
+                dropdownItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+    }
+}
 
-
-
-
-
-
+// Gọi hàm khi DOM sẵn sàng
+document.addEventListener('DOMContentLoaded', function() {
+    // ... các code khác ...
+    
+    setupDropdownMenu();
+    
+    // Cập nhật khi thay đổi kích thước cửa sổ
+    window.addEventListener('resize', function() {
+        setupDropdownMenu();
+    });
+});
 
 
     // Thêm vào phần script của index.html
