@@ -113,7 +113,7 @@ Thành phần dinh dưỡng (100g):
 • Vị: Vani, socola, dâu (3 tầng 3 vị)
 • Thời gian đặt: Trước 7 ngày
 • Setup miễn phí trong nội thành
-• Tặng kèm dao cắt bánh cao cấp`,
+• Tặng kèm dao cắt bánch cao cấp`,
         gia: "3000000",
         category: "Bánh Cưới",
         size: "5kg (3 tầng)",
@@ -582,9 +582,24 @@ function renderProductDetail(product) {
                         </div>
                     </div>
                     
-                    <button class="btn-view-all-reviews" onclick="viewAllReviews()">
-                        Xem tất cả đánh giá
-                    </button>
+                    <div class="write-review-btn" style="margin-top: 20px;">
+                        <button onclick="viewAllReviews()" style="
+                            background: linear-gradient(135deg, #667eea, #764ba2);
+                            color: white;
+                            border: none;
+                            padding: 12px 30px;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            font-weight: bold;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin: 0 auto;
+                        ">
+                            <i class="fas fa-edit"></i>
+                            Viết đánh giá của bạn
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -818,7 +833,377 @@ function switchTab(tabName) {
 
 // Xem tất cả đánh giá
 function viewAllReviews() {
-    alert('Tính năng đang phát triển. Sẽ có sớm!');
+    // Tạo modal để hiển thị tất cả đánh giá
+    const product = JSON.parse(localStorage.getItem('selectedProduct'));
+    if (!product) return;
+    
+    const reviews = getProductReviews(product.id);
+    
+    const modalHTML = `
+        <div class="reviews-modal" style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        ">
+            <div class="modal-content" style="
+                background: white;
+                border-radius: 15px;
+                padding: 30px;
+                max-width: 800px;
+                width: 100%;
+                max-height: 80vh;
+                overflow-y: auto;
+            ">
+                <div class="modal-header" style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    padding-bottom: 15px;
+                    border-bottom: 1px solid #eee;
+                ">
+                    <h2 style="margin: 0; color: #333;">Đánh giá sản phẩm</h2>
+                    <button onclick="closeModal()" style="
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        cursor: pointer;
+                        color: #666;
+                    ">&times;</button>
+                </div>
+                
+                <div class="reviews-summary" style="
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+                    margin-bottom: 30px;
+                    padding: 20px;
+                    background: #f9f9f9;
+                    border-radius: 10px;
+                ">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; font-weight: bold; color: #333;">4.5</div>
+                        <div style="color: #ff9800; font-size: 18px;">
+                            ${'★'.repeat(4)}<span style="color: #ddd;">★</span>
+                        </div>
+                        <div style="color: #666; margin-top: 5px;">${reviews.length} đánh giá</div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        ${[5, 4, 3, 2, 1].map(star => `
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                <div style="color: #ff9800; width: 60px;">${star} sao</div>
+                                <div style="flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden;">
+                                    <div style="
+                                        height: 100%;
+                                        background: #ff9800;
+                                        width: ${(reviews.filter(r => r.rating === star).length / reviews.length * 100)}%;
+                                    "></div>
+                                </div>
+                                <div style="width: 40px; text-align: right; color: #666; font-size: 14px;">
+                                    ${reviews.filter(r => r.rating === star).length}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="add-review-section" style="
+                    margin-bottom: 30px;
+                    padding: 20px;
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    border-radius: 10px;
+                    color: white;
+                ">
+                    <h3 style="margin: 0 0 15px 0;">Thêm đánh giá của bạn</h3>
+                    <div class="review-stars-input" style="margin-bottom: 15px;">
+                        ${[1,2,3,4,5].map(star => `
+                            <span style="
+                                font-size: 24px;
+                                cursor: pointer;
+                                color: #ddd;
+                                margin-right: 5px;
+                            " onclick="rateProduct(${star})" data-star="${star}">★</span>
+                        `).join('')}
+                        <span id="selected-rating-text" style="margin-left: 10px;"></span>
+                    </div>
+                    <textarea id="review-text" placeholder="Chia sẻ cảm nhận của bạn về sản phẩm..." style="
+                        width: 100%;
+                        height: 100px;
+                        padding: 12px;
+                        border: none;
+                        border-radius: 8px;
+                        resize: vertical;
+                        margin-bottom: 15px;
+                    "></textarea>
+                    <button onclick="submitReview()" style="
+                        background: white;
+                        color: #667eea;
+                        border: none;
+                        padding: 10px 25px;
+                        border-radius: 8px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    ">Gửi đánh giá</button>
+                </div>
+                
+                <div class="all-reviews">
+                    ${reviews.map(review => `
+                        <div class="review-item" style="
+                            padding: 20px;
+                            border-bottom: 1px solid #eee;
+                            margin-bottom: 15px;
+                        ">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                                <img src="${review.avatar}" alt="${review.name}" style="
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 50%;
+                                    object-fit: cover;
+                                ">
+                                <div>
+                                    <div style="font-weight: bold; color: #333;">${review.name}</div>
+                                    <div style="color: #666; font-size: 14px;">${formatDate(review.date)}</div>
+                                </div>
+                            </div>
+                            <div style="color: #ff9800; margin-bottom: 10px;">
+                                ${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}
+                            </div>
+                            <div style="color: #333; line-height: 1.6; margin-bottom: 10px;">
+                                ${review.comment}
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="likeReview('${review.id}')" style="
+                                    background: none;
+                                    border: 1px solid #ddd;
+                                    padding: 5px 15px;
+                                    border-radius: 20px;
+                                    color: #666;
+                                    cursor: pointer;
+                                ">
+                                    <i class="fas fa-thumbs-up"></i> Hữu ích (${review.likes || 0})
+                                </button>
+                                <button onclick="reportReview('${review.id}')" style="
+                                    background: none;
+                                    border: none;
+                                    color: #999;
+                                    cursor: pointer;
+                                ">
+                                    Báo cáo
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    setupReviewStars();
+}
+
+// Đóng modal
+function closeModal() {
+    const modal = document.querySelector('.reviews-modal');
+    if (modal) modal.remove();
+}
+
+// Lấy đánh giá sản phẩm
+function getProductReviews(productId) {
+    // Dữ liệu mẫu - trong thực tế lấy từ server
+    return [
+        {
+            id: "review-1",
+            productId: productId,
+            name: "Nguyễn Văn A",
+            avatar: "https://i.pravatar.cc/150?img=1",
+            rating: 5,
+            date: "2024-01-20",
+            comment: "Bánh rất ngon, dâu tươi và kem không quá ngọt. Con tôi rất thích! Giao hàng đúng giờ, đóng gói cẩn thận.",
+            likes: 12
+        },
+        {
+            id: "review-2",
+            productId: productId,
+            name: "Trần Thị B",
+            avatar: "https://i.pravatar.cc/150?img=2",
+            rating: 4,
+            date: "2024-01-15",
+            comment: "Chất lượng tốt, giao hàng đúng giờ. Hương vị đậm đà, nhưng hơi ngọt một chút. Sẽ ủng hộ lần sau.",
+            likes: 8
+        },
+        {
+            id: "review-3",
+            productId: productId,
+            name: "Lê Văn C",
+            avatar: "https://i.pravatar.cc/150?img=3",
+            rating: 5,
+            date: "2024-01-10",
+            comment: "Tuyệt vời! Bánh đẹp như hình, hương vị thơm ngon. Nhân viên tư vấn nhiệt tình. Rất đáng tiền!",
+            likes: 15
+        },
+        {
+            id: "review-4",
+            productId: productId,
+            name: "Phạm Thị D",
+            avatar: "https://i.pravatar.cc/150?img=4",
+            rating: 3,
+            date: "2024-01-05",
+            comment: "Bánh ngon nhưng hơi nhỏ so với mô tả. Nên cải thiện phần đóng gói cho chắc chắn hơn.",
+            likes: 3
+        },
+        {
+            id: "review-5",
+            productId: productId,
+            name: "Hoàng Văn E",
+            avatar: "https://i.pravatar.cc/150?img=5",
+            rating: 5,
+            date: "2024-01-02",
+            comment: "Đã mua nhiều lần, chất lượng luôn ổn định. Bánh tươi, nguyên liệu tốt. 5 sao!",
+            likes: 20
+        },
+        {
+            id: "review-6",
+            productId: productId,
+            name: "Nguyễn Thị F",
+            avatar: "https://i.pravatar.cc/150?img=6",
+            rating: 4,
+            date: "2023-12-28",
+            comment: "Phù hợp cho sinh nhật bé. Bánh đẹp, trang trí dễ thương. Giá cả hợp lý.",
+            likes: 7
+        }
+    ];
+}
+
+// Đánh giá sản phẩm
+function rateProduct(rating) {
+    const stars = document.querySelectorAll('[data-star]');
+    stars.forEach((star, index) => {
+        const starNum = parseInt(star.dataset.star);
+        star.style.color = starNum <= rating ? '#ffd700' : '#ddd';
+    });
+    
+    const ratingText = document.getElementById('selected-rating-text');
+    const texts = [
+        "Rất tệ",
+        "Tệ",
+        "Bình thường",
+        "Tốt",
+        "Tuyệt vời"
+    ];
+    ratingText.textContent = texts[rating - 1];
+    ratingText.style.color = '#ffd700';
+    
+    // Lưu rating tạm thời
+    window.tempRating = rating;
+}
+
+// Setup stars khi mở modal
+function setupReviewStars() {
+    const stars = document.querySelectorAll('[data-star]');
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            const rating = parseInt(this.dataset.star);
+            stars.forEach((s, index) => {
+                const starNum = parseInt(s.dataset.star);
+                s.style.color = starNum <= rating ? '#ffd700' : '#ddd';
+            });
+        });
+        
+        star.addEventListener('mouseout', function() {
+            if (window.tempRating) {
+                stars.forEach(s => {
+                    const starNum = parseInt(s.dataset.star);
+                    s.style.color = starNum <= window.tempRating ? '#ffd700' : '#ddd';
+                });
+            } else {
+                stars.forEach(s => {
+                    s.style.color = '#ddd';
+                });
+            }
+        });
+    });
+}
+
+// Gửi đánh giá
+function submitReview() {
+    const user = localStorage.getItem('currentUser');
+    if (!user) {
+        showNotification('Vui lòng đăng nhập để đánh giá sản phẩm!', 'warning');
+        setTimeout(() => {
+            closeModal();
+            window.location.href = 'login.html';
+        }, 1500);
+        return;
+    }
+    
+    const rating = window.tempRating;
+    const comment = document.getElementById('review-text').value.trim();
+    
+    if (!rating) {
+        showNotification('Vui lòng chọn số sao đánh giá!', 'error');
+        return;
+    }
+    
+    if (!comment) {
+        showNotification('Vui lòng nhập nội dung đánh giá!', 'error');
+        return;
+    }
+    
+    // Lấy thông tin user
+    const userData = JSON.parse(user);
+    
+    // Tạo review mới
+    const newReview = {
+        id: 'review-' + Date.now(),
+        productId: JSON.parse(localStorage.getItem('selectedProduct')).id,
+        name: userData.name || userData.email,
+        avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70) + 1}`,
+        rating: rating,
+        date: new Date().toISOString().split('T')[0],
+        comment: comment,
+        likes: 0
+    };
+    
+    // Trong thực tế, gửi lên server
+    // Ở đây chỉ hiển thị thông báo
+    showNotification('Cảm ơn bạn đã đánh giá sản phẩm!', 'success');
+    
+    // Đóng modal sau 1.5 giây
+    setTimeout(() => {
+        closeModal();
+        // Reload lại phần đánh giá
+        switchTab('reviews');
+    }, 1500);
+}
+
+// Thích đánh giá
+function likeReview(reviewId) {
+    // Trong thực tế, gửi request lên server
+    showNotification('Cảm ơn phản hồi của bạn!', 'info');
+}
+
+// Báo cáo đánh giá
+function reportReview(reviewId) {
+    const reason = prompt('Vui lòng nhập lý do báo cáo:');
+    if (reason && reason.trim()) {
+        showNotification('Đã gửi báo cáo. Cảm ơn bạn đã đóng góp!', 'info');
+    }
+}
+
+// Format ngày
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN');
 }
 
 // Xem sản phẩm khác
@@ -1615,20 +2000,31 @@ function addProductDetailStyles() {
             line-height: 1.6;
         }
         
-        .btn-view-all-reviews {
-            padding: 12px 30px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 8px;
-            color: #333;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+        /* ===== REVIEWS MODAL ===== */
+        .reviews-modal .modal-content {
+            animation: modalFadeIn 0.3s ease;
         }
         
-        .btn-view-all-reviews:hover {
-            background: #e0e0e0;
-            transform: translateY(-2px);
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .reviews-modal .review-stars-input span:hover {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+        }
+        
+        .reviews-modal .review-item:hover {
+            background: #f9f9f9;
+            border-radius: 8px;
+            transition: background 0.3s;
         }
         
         /* ===== POLICY ===== */
@@ -1763,5 +2159,10 @@ window.switchTab = switchTab;
 window.viewAllReviews = viewAllReviews;
 window.viewProduct = viewProduct;
 window.formatPrice = formatPrice;
+window.rateProduct = rateProduct;
+window.submitReview = submitReview;
+window.likeReview = likeReview;
+window.reportReview = reportReview;
+window.closeModal = closeModal;
 
 console.log('product-detail.js đã sẵn sàng!');
